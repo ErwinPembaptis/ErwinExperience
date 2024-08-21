@@ -5,3 +5,24 @@ https://gmplib.org/list-archives/gmp-discuss/2012-July/005091.html
 
 The e-mail is from 2012 era. Ancient.
 
+At the time of this text's writing, the year is August 2024. Not Ancient.
+Anyway, here is the requirement:
+.... 1. MSYS2 from (www.msys2.org).
+.... 2. That's it.
+
+1. Download the msys2-x86_64-20240727.exe. File's name will be different for different era. Don't be afraid if we live in a different era.
+2. Install the MSYS2. This will need some Administrator's permission. Installing a program needs an Administrator's permission. Inconvenience!
+3. You now have an MSYS2 folder inside your Start Menu (list of apps from the start button).
+4. Start MSYS2 UCRT64. That means the MSYS2 will run with UCRT 64-bit compiler environment (may be, I do not really know either).
+5. You now get a weird-looking Command Line window.
+6. Type "pacman -Syu". Without the "". Case sensitive (Means letter S capital is different to letter s non-capital). This will synchronise the database to the MSYS2 server. This is not Ronaldo.
+7. Type "pacman -S mingw-w64-ucrt-x86_64-gcc". This will install the GCC compiler.
+8. Type "pacman -S make". This will install "make". Basically a program that will read and execute a "makefile" file. The makefile usually contains compiling instructions.
+9. Type "pacman -S m4". This will install "m4". Basically a macro processor. That's it.
+10. After that, navigate the MSYS2 Command Line window to your GMP source folder. Of course you must download the source first, and then extract it some where else.
+11. Type "./configure --prefix=C:/wherever" if you want a static library. Type "./configure --prefix=C:/wherever --disable-static --enable-shared" if you want a dynamic library. The library file output will be in C:/wherever. Adjust according to your needs. If you don't provide the --prefix flag, the MSYS2 will install the library to its /usr/local. Basically an inconvenience. So make sure to provide that --prefix flag!
+12. Type "make". This will compile and link the source files. Take your time, you can colonise some land while you are waiting.
+13. Type "make check". This will compile and execute every single tests available. GMP has been carefully tested by its authors, but compilers are all too often released with serious bugs. GMP tends to explore interesting corners in compilers and has hit bugs on quite a few occasions. Take your time, you can colonise some planet while you are waiting.
+14. Type "make install". This will export the libraries files to the designated path (For example C:/wherever in the previous step 11).
+
+The compiling process of this GMP library is actually not any worse than compiling CPython source code. Worry not!
